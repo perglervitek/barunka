@@ -6,7 +6,7 @@
   <title>Království Barunky</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #eecdf9, #d2ecfd);
+      background: linear-gradient(to bottom, #fde2ff, #d2ecfd);
       font-family: 'Comic Sans MS', cursive;
       text-align: center;
       padding: 2rem;
@@ -14,6 +14,7 @@
     }
     h1 {
       font-size: 3rem;
+      margin-bottom: 0.5rem;
     }
     p {
       font-size: 1.5rem;
@@ -28,13 +29,22 @@
       font-size: 1.2rem;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s;
     }
     button:hover {
       background-color: #f3bde5;
+      transform: scale(1.05);
     }
     #response {
       margin-top: 2rem;
       font-size: 1.3rem;
+      background: #ffffffa1;
+      padding: 1rem;
+      border-radius: 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
     .modal {
       display: none;
@@ -51,22 +61,27 @@
       max-width: 400px;
       width: 80%;
       text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
     .animal-emoji {
       cursor: pointer;
       font-size: 2rem;
       margin: 0.5rem;
+      transition: transform 0.2s;
+    }
+    .animal-emoji:hover {
+      transform: scale(1.3);
     }
   </style>
 </head>
 <body>
-  <h1>Vítej v království Barunky 🌸</h1>
+  <h1>🌸 Vítej v království Barunky 🌸</h1>
   <p>Tohle je kouzelná stránka, kde můžeš mluvit s Duhovou Vílu Markétkou 🌈✨</p>
 
   <div>
     <button onclick="generateFairyTale()">📖 Chci pohádku</button>
     <button onclick="openModal()">❓ Chci se na něco zeptat</button>
-    <button onclick="askGPT('Nauč něco dítě kolem 7-9 let')">🎓 Chci se učit</button>
+    <button onclick="askGPT('Řekni mi zajímavý fakt nebo něco nového vhodného pro dítě ve věku 7 až 9 let')">🎓 Chci se učit</button>
     <button onclick="showAnimals()">🦁 Zajímavost o zvířatech</button>
   </div>
 
@@ -83,7 +98,7 @@
   </div>
 
   <div id="animalChooser" style="display: none; margin-top: 2rem;">
-    <p>Vyber si zvířátko:</p>
+    <p style="font-size: 1.3rem; font-weight: bold;">Vyber si zvířátko:</p>
     <div>
       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o medvědovi')">🐻</span>
       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o pandě')">🐼</span>
@@ -99,7 +114,7 @@
       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o psovi')">🐶</span>
       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o slonovi')">🐘</span>
       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o žirafě')">🦒</span>
-      <span class="animal-emoji" onclick="askGPT('Řekni mi něco o delfínovi')">🐬</span>v
+      <span class="animal-emoji" onclick="askGPT('Řekni mi něco o delfínovi')">🐬</span>
     </div>
   </div>
 

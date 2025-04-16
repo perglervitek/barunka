@@ -124,6 +124,36 @@
 
   <div id="response"></div>
   <button id="playAudioBtn" onclick="speakText()" style="display: none;">▶️ Přečíst nahlas</button>
+   <div class="modal" id="questionModal">
+     <div class="modal-content">
+       <p>Zeptej se na cokoliv:</p>
+       <input type="text" id="userQuestion" placeholder="Zadej otázku" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;" />
+       <br>
+       <button onclick="submitQuestion()">Odeslat</button>
+       <button onclick="closeModal()">Zavřít</button>
+     </div>
+   </div>
+ 
+   <div id="animalChooser" style="display: none; margin-top: 2rem;">
+     <p style="font-size: 1.3rem; font-weight: bold;">Vyber si zvířátko:</p>
+     <div>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o medvědovi')">🐻</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o pandě')">🐼</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o tučňákovi')">🐧</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o koni')">🐴</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o tygrovi')">🐯</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o opici')">🐵</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o králíkovi')">🐰</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o sovi')">🦉</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o lišce')">🦊</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o žábě')">🐸</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o kočce')">🐱</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o psovi')">🐶</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o slonovi')">🐘</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o žirafě')">🦒</span>
+       <span class="animal-emoji" onclick="askGPT('Řekni mi něco o delfínovi')">🐬</span>
+     </div>
+   </div>
   <div id="mathGame"></div>
 
   <div id="successModal">

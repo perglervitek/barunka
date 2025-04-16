@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Království Barunky</title>
   <style>
-    /* Původní CSS beze změn */
     body {
       background: linear-gradient(to bottom, #fde2ff, #d2ecfd);
       font-family: 'Comic Sans MS', cursive;
@@ -113,12 +112,19 @@
     <button onclick="openModal()">❓ Chci se na něco zeptat</button>
     <button onclick="askGPT('Řekni mi zajímavý fakt nebo něco nového vhodného pro dítě ve věku 7 až 9 let. Pouze text faktu. Nic víc!')">🎓 Chci se učit</button>
     <button onclick="showAnimals()">🦁 Zajímavost o zvířatech</button>
+    <button onclick="startMathGame()">➕ Procvičování počtů</button>
+
   </div>
 
   <div id="response"></div>
   <button id="playAudioBtn" onclick="speakText()" style="display: none;">▶️ Přečíst nahlas</button>
+  <div id="mathGame"></div>
 
-  <!-- Modal and emoji chooser remains unchanged -->
+  <div id="successModal">
+    <div id="successModalContent">
+      🎉 Výborně! Správná odpověď! 🎉
+    </div>
+  </div>
 
   <script>
     function openModal() {
@@ -179,6 +185,47 @@
       const data = await response.json();
       document.getElementById('response').textContent = data.reply;
       document.getElementById('playAudioBtn').style.display = 'inline-block';
+    }
+
+       let currentAnswer = null;
+
+    function startMathGame() {
+      generateExample();
+    }
+
+    function generateExample() {
+      const num1 = Math.floor(Math.random() * 10 + 1);
+      const num2 = Math.floor(Math.random() * 10 + 1);
+      currentAnswer = num1 + num2;
+      document.getElementById('mathGame').innerHTML = `
+        <p><strong>Kolik je ${num1} + ${num2}?</strong></p>
+        <input type="number" id="mathInput" />
+        <button onclick="checkMathAnswer()">Odpovědět</button>
+        <div id="mathFeedback" class="feedback"></div>
+      `;
+    }
+
+    function checkMathAnswer() {
+      const input = document.getElementById('mathInput').value;
+      const feedback = document.getElementById('mathFeedback');
+      if (parseInt(input) === currentAnswer) {
+        feedback.innerHTML = '<span class="happy">🎉 Správně! Skvělé! 🎉</span>';
+        showSuccessModal();
+        setTimeout(() => {
+          closeSuccessModal();
+          generateExample();
+        }, 2000);
+      } else {
+        feedback.innerHTML = '<span class="sad">😢 Zkus to znovu.</span>';
+      }
+    }
+
+    function showSuccessModal() {
+      document.getElementById('successModal').style.display = 'flex';
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('successModal').style.display = 'none';
     }
   </script>
 </body>
